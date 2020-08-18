@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Garden Row</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h2>Hello, {{ request.session.first_name }}!</h2>
+    <div class="buttons">
+      <button><a href="/dashboard" class="decor">Home</a></button>
+      <button><a href="/logout">Logout</a></button>
+    </div>
+  </div>
+  <h3>Discussion and events:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for blog in blogs %}
+      <tr>
+        <td><a href="/blog/{{ blog.id}}">{{ blog.title}}</a></td>
+        <td>{{ blog.description }}</td>
+        <td>
+          {% if blog.user.id == request.session.user_id %}
+          <a href="/blog/{{ blog.id }}/edit">Edit</a> | <a href="/blog/{{ blog.id }}/remove">Remove</a>
+          {% else %}
+          <a href="/blog/{{ blog.id }}/comment">Comment</a></a>
+          {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br> <button><a href="blog/new" class="decor" class="buttons">Create post!</a></button></body></br>         
+</body>
+
+</html>

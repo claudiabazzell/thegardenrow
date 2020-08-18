@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Garden Row</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h2> Garden, Sweet Garden!</h2>
+
+    <div class="buttons">
+      <button><a href="/dashboard">Home</a></button>
+      <button><a href="/logout">Logout</a></button>
+    </div>
+  </div>
+  <h3>{{ item.item_name }}</h3>
+  <div id="details">
+    <p>Quantity: {{ item.quantity }}</p>
+    <p>Description: {{ item.description }}</p>
+    <p>Created On: {{ item.created_at }}</p>
+    <p>Last Updated: {{ item.updated_at }}</p>
+    <p>Created By: {{ item.user.first_name }}</p>
+  </div>
+  <div class="comment-container">
+    <h3>Comments</h3>
+    <div class="comments">
+      {% for comment in comments %}
+      <div class="comment">
+        <span class="comment-user">{{ comment.user.first_name }}</span>
+        <span class="comment-time">{{ comment.created_at }}</span>
+        <div class="comment-body">{{ comment.comment }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <form action="/items/{{ item.id }}/comment" method="POST">
+      {% csrf_token %}
+      <p><label class="label" for="comment">Comment:</label>
+        <textarea name="comment" id="comment" cols="30" rows="3"></textarea></p>
+        <button>Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>

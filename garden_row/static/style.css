@@ -1,0 +1,189 @@
+* {
+  font-family: 'Anonymous Pro', monospace;
+}
+
+body {
+  background-color: #fbeee6;
+}
+
+.error {
+  color: red;
+}
+
+input,
+button,
+option,
+select {
+  color: black;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 600px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 5px;
+}
+
+tr {
+  background-color: #efeeee;
+}
+
+#blog {
+  background-color: #e4dac2;
+
+}
+
+th {
+  background-color: #c4bdac;
+  color: black;
+}
+
+
+
+.form {
+  width: 284px;
+  height: 350px;
+  border-color: grey;
+  border-width: 3px;
+  border-style: solid;
+  color: black;
+  text-align: left;
+  padding: 0 20px;
+  vertical-align: top;
+  background-color: #c0d6c5;
+}
+
+.main {
+  border-width: 1px;
+  border-color: black;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 50px;
+}
+
+.login {
+  margin-left: 79%;
+  border-width: 1px;
+  border-color: black;
+}
+
+label {
+  width: 100px;
+  display: inline-block;
+}
+
+.decor {
+  text-decoration: none;
+}
+
+.header {
+  padding: 0.7em 1.4em;
+  margin: -8px -0.7em 0.3em -7px;
+  border-radius: 0.15em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',
+    sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #FFFFFF;
+  background-color: #b8dedb;
+  box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+  position: relative;
+}
+
+h2,
+.buttons .button {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.buttons {
+  right: 20px;
+  position: absolute;
+  top: 10px;
+}
+
+.button {
+  right: 10px;
+  position: absolute;
+
+}
+
+h2 {
+  margin-top: 0;
+}
+
+
+.label {
+  width: 120px;
+  display: inline-block;
+}
+
+
+.create {
+  width: 315px;
+  height: 400px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  color: black;
+  text-align: left;
+  padding: 0 20px;
+}
+
+
+#details {
+  width: 375px;
+  height: 375px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  color: black;
+  text-align: left;
+  padding: 0 20px;
+}
+
+#style {
+  background-color: lightgray;
+  border: none;
+  color: white;
+  padding: 70px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+
+}
+
+.trip-buttons {
+  text-align: right;
+}
+
+.carousel {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.image-title {
+  text-align: center;
+}
+
+a {
+  color: black;
+}
+
+h1 {
+  color: gray;
+}
+
+#align {
+  margin-left: 50px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Garden Row</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'slick-1.8.1/slick/slick.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'slick-1.8.1/slick/slick-theme.css' %}" />
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h2> Garden, Sweet Garden! Happy day, {{ request.session.first_name }}.</h2>
+    <div class="buttons">
+      <button><a href="/logout">Logout</a></button>
+    </div>
+  </div>
+  <h3 id="align">Available items:</h3>
+  <div class="main">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td><a href="/items/{{ item.id}}">{{ item.item_name}}</a></td>
+          <td>{{ item.quantity }} </td>
+          <td>{{ item.description }}</td>
+          <td>
+          {% if item.user.id == request.session.user_id %}
+          <a href="/items/{{ item.id }}/edit">Edit</a> | <a href="/items/{{ item.id }}/remove">Remove</a>
+          {% else %}
+          <a href="/items/{{ item.id }}/comment">Comment</a></a>
+          {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><button><a href="items/new" class="decor" class="buttons">List item!</a></button></br>
+  </div>
+  <div class="main">
+    <button id="style"><a href="/blog">Community Blog</a></button>
+  </div>
+
+  <div class="carousel">
+    {% for image in images %}
+    <div>
+      <p class="image-title">{{ image.title }}</p>
+      <img width="500" height="250" src="{{ image.image.url }}" alt={{ image.title }} />
+    </div>
+    {% endfor %}
+  </div>
+  </br>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'slick-1.8.1/slick/slick.min.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.carousel').slick();
+    });
+  </script>
+  <form method="post" action="/upload" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+</body>
+
+</html>

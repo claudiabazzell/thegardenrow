@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <title>THe Garden Row</title>
+</head>
+
+<body>
+
+  <div class="header">
+    <h2>Hello, {{ request.session.first_name }}! Creat a blogpost!</h2>
+    <div class="buttons">
+      <button><a href="/logout">Logout</a></button>
+    </div>
+  </div>
+  <section class="create">
+    <form action="/blog/create" method="POST">
+      {% csrf_token %}
+      <p><label class="label" for="title">Title</label>
+        <input type="text" name="title" id="title"></p>
+      <p><label class="label" for="description">Description</label>
+        <textarea name="description" id="description" cols="20" rows="13"></textarea></p>
+      <div class="trip-buttons">
+        <button>Submit</button>
+        <button><a href="/blog" class="decor">Cancel</a></button>
+      </div>
+  </section>
+
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    {% if 'new' in message.extra_tags %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  </form>
+</body>
+
+</html>

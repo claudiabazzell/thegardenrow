@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Garden Row</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h2>Hello, {{ request.session.first_name }}! Check out the posts!</h2>
+    <div class="buttons">
+      <button><a href="/dashboard">Home</a></button>
+      <button> <a href="/logout">Logout</a></button>
+    </div>
+  </div>
+  <h3>{{ blog.title }}</h3>
+  <div id="details">
+    <p>Title: {{ blog.title }}</p>
+    <p>Description: {{ blog.description }}</p>
+    <p>Created By: {{ blog.user.first_name }}</p>
+    <p>Created On: {{ blog.created_at }}</p>
+    <p>Last Updated: {{ blog.updated_at }}</p>
+  </div>
+</body>
+
+</html>

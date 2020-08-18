@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Show</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h2>Hello, {{ request.session.first_name }}! Let's edit your item!</h2>
+    <div class="buttons">
+      <button><a href="/logout">Logout</a></button>
+    </div>
+  </div>
+
+  <section class="create">
+    <form action="/items/{{ item.id }}/update" method="POST">
+      {% csrf_token %}
+      <p><label class="label" for="item_name">Item Name</label>
+        <input type="text" name="item_name" id="item_name" value="{{ item.item_name}}"></p>
+      <p><label class="label" for="quantity">quantity</label>
+        <input type="date" name="quantity" id="quantity" value="{{ item.quantity}}"></p>
+     <p><label class="label" for="description">Description:</label>
+        <textarea name="description" id="description" cols="20" rows="13">{{item.description}}</textarea></p>
+      <div class="trip-buttons">
+        <button>Submit</button>
+        <button><a href="/dashboard" class="decor">Cancel</a></button>
+      </div>
+  </section>
+
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    {% if 'edit' in message.extra_tags %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  </form>
+</body>
+
+</html>
